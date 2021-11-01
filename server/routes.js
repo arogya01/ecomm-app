@@ -17,14 +17,18 @@ const getProducts = (req, res) => {
 };
 
 const getProduct = (req, res) => {
-  const { productId } = req.params.productId;
+  const { productId } = req.params;
 
   const product = products.find((product) => product.id === productId);
 
-  if (!product) {
+  try{
+    if (!product) {
+      res.status(404).json({error});
+    }
+    res.status(200).json({ product });
 
+  }catch(error){
+    return res.status(404).json({statusCode:404, message:error.message});
   }
-
-  res.status(200).json({ product });
 };
 
