@@ -7,7 +7,6 @@ module.exports = function getRoutes() {
 
   //we're extracting all the products from the product.json file
   router.get("/products", getProducts);
-
   router.get("/products/:productId", getProduct);
 
   return router;
